@@ -5,7 +5,6 @@ using DoorAccessApplication.Core.Interfaces;
 using DoorAccessApplication.Infrastructure;
 using DoorAccessApplication.Infrastructure.Persistence;
 using FluentValidation.AspNetCore;
-using LockAccessApplication.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -15,7 +14,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 AddServicesToContainer(builder);
 
-var app = builder.Build();
+
+
+
+var app =     builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -38,6 +40,7 @@ using (var scope = app.Services.CreateScope())
     var dataContext = scope.ServiceProvider.GetRequiredService<LockDbContext>();
     dataContext.Database.Migrate();
 }
+
 
 app.MapControllers();
 
@@ -85,8 +88,11 @@ void AddServicesToContainer(WebApplicationBuilder builder)
 
     ConfigureAuthService(builder.Services);
 
+    ConfigureBusService(builder.Services);
+
     builder.Services.AddAutoMapper(typeof(ApiAssemblyMarker), typeof(ICoreAssemblyMarker));
 }
+
 
 void ConfigureAuthService(IServiceCollection services)
 {
@@ -107,3 +113,9 @@ void ConfigureAuthService(IServiceCollection services)
         options.Audience = "lockAccess";
     });
 }
+
+void ConfigureBusService(IServiceCollection services)
+{
+   
+}
+

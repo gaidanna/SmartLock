@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DoorAccessApplication.Controllers
+namespace DoorAccessApplication.Api.Controllers
 {
     [Authorize]
     [ApiController]

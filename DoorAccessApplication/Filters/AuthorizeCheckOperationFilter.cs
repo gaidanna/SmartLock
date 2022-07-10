@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace LockAccessApplication.Api.Filters
+namespace DoorAccessApplication.Api.Filters
 {
     public class AuthorizeCheckOperationFilter : IOperationFilter
     {
